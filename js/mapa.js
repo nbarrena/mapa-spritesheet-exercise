@@ -1,18 +1,18 @@
-// SpriteSheet importatu  (1)
-// loadImage eta loadJSON importatu (2)
+// Importa SpriteSheet  (1)
+// Importa loadImage y loadJSON importatu (2)
 
 window.onload = function () {
 
-    let canvas = // oihala lortu (3)
-    let context = // context lortu canvas-etik (4)
+    let canvas = // consigue el lienzo (3)
+    let context = // consigue context a través de canvas(4)
 
-// mapa sortu ( 14x25 )
+// crea el mapa ( 14x25 )
     let mapa = new Array(14);
     for (let i = 0; i < 14; i++) {
         mapa[i] = new Array(25);
     }
 
-// mapa hasieratu
+// inicializa mapa
     for (let i = 0; i < 14; i++) {
         for (let j = 0; j < 25; j++) {
             mapa[i][j] = 0;
@@ -20,19 +20,18 @@ window.onload = function () {
     }
 
 
-    // hemen dagoen mapa: https://gist.github.com/juananpe/d5630e241605b60705c012bdc575c263
-    // js/mapa.json fitxategian kopiatu (eskuz)
-    
-    // hemen dagoen https://egela.ehu.eus/mod/resource/view.php?id=6147462 (tiles.png) fitxategia js/ karpetan kopiatu (js/tiles.png)
+    // el mapa que está aquí: https://gist.github.com/juananpe/d5630e241605b60705c012bdc575c263
+    // copia (a mano) en el siguiente fichero js/mapa.json  
+    // el fichero (tiles.png) que se encuentra aquí https://egela.ehu.eus/mod/resource/view.php?id=6147595 copialo en la carpeta js/  (js/tiles.png)
     
     let url = 'js/mapa.json'
 
-    // loadImage eta loadJSON erabili js/tiles.png eta js/mapa.json aldi berean kargatzeko
+    // utiliza loadImage y loadJSON para cargar al mismo tiempo js/tiles.png y js/mapa.json 
     Promise.all( /*    (5)     */ )
         .then(([sprites, r]) => {
 
-                let spriteSheet = // SpriteSheet klasea instantziatu 16x16   (6)
-                // spriteSheet-en dagoen define metodoa erabili sky ('s') eta ground ('g') grafikoak kargatzeko  (7)
+                let spriteSheet = // Instancia la clase SpriteSheet 16x16   (6)
+                // utiliza el método define() de la clase spriteSheet para cargar los gráficos sky ('s') y ground ('g') (7)
                 
                 r.backgrounds.forEach(elem => {
                     elem.ranges.forEach(range => {
@@ -44,12 +43,12 @@ window.onload = function () {
                     })
                 })
 
-                // lerro honekin canvas-en margotzen duguna x2 zoom batekin margotuko da 
+                // con la siguiente línea dibujaremos con un zoom de x2 , l dibujado en canvas 
                 context.scale(2, 2) 
 
-                // mapa bistaratu
-                // maparen gelaxkak zeharkatu eta gelaxka bakoitzean dagoen balietan oinarriturik ('s' edo 'g')
-                // canvas-ean margotu dagokion osagaia (SpriteSheet-ek eskaintzen duen drawTile erabili)  (8)
+                // visualiza el mapa
+                // recorre el mapa y basandonos en el valor de cada celda  ('s' edo 'g')
+                // dibuja en canvas el elemento que le corresponde  (usa el método drawTile ofrecido por la clase SpriteSheet)  (8)
 
 
 
